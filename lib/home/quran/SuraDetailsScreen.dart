@@ -29,7 +29,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                 fontSize: 30,)),
         ),
         body: Container(
-            margin: EdgeInsets.symmetric(vertical: 96, horizontal: 24),
+            margin: EdgeInsets.symmetric(vertical: 50, horizontal: 24),
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(24)),
             child: suraContent.isEmpty
