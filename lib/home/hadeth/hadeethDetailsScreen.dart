@@ -30,8 +30,9 @@ class HadethDetailsScreen extends StatelessWidget {
                 args.content,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 18,
                 ),
+                textDirection: TextDirection.rtl,
               ),
             )),
       )

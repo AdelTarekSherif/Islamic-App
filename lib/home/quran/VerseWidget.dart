@@ -11,9 +11,10 @@ class AyaWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       child: Text(
-        text,
+        text+'{${index+1}}',
         textAlign: TextAlign.center,
         style: TextStyle(fontSize: 26),
+        textDirection: TextDirection.rtl,
       ),
     );
   }
