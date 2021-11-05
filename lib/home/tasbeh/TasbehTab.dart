@@ -37,26 +37,23 @@ class _Seb7aState extends State<Seb7a> {
           flex: 3,
           child: InkWell(
             onTap:  _incrementCounter,
-            child: Transform.rotate(
-              angle: rotateValue*(pi/180),
-              child: Stack(
-                children: [
-                  Positioned(
-                      top: 13,
-                      left: 180,
-                      child: Image.asset('assets/images/head_sebha_logo.png')),
-                  Positioned(
-                    top: 93,
-                    left: 80,
-                    child: Image.asset('assets/images/body_of_seb7a.png'),
-                  ),
-                ],
-              ),
-            ),
-
+            child: Stack(
+              children: [
+                Positioned(
+                    top: 13,
+                    left: 180,
+                    child: Image.asset('assets/images/head_sebha_logo.png')),
+                Positioned(
+                  top: 93,
+                  left: 80,
+                  bottom: 20,
+                  child: Transform.rotate(angle: rotateValue*(pi/180),
+                      child: Image.asset('assets/images/body_of_seb7a.png')),
+                ),
+              ],
+            )
           ),
         ),
-        // Expanded(child: SizedBox(height: 10,)),
         Expanded(
           flex: 2,
           child: Column(
@@ -74,7 +71,6 @@ class _Seb7aState extends State<Seb7a> {
               ),
               Container(
                 padding: EdgeInsets.only(right: 18,left: 18,top: 26,bottom: 26),
-                margin: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Color.fromRGBO(201, 179, 150, 1.0),

@@ -68,5 +68,5 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  List<Widget> views = [QuranTab(), HadethTab(), Seb7a(), RadioTab()];
+  List<Widget> views = [QuranTab(), HadethTab(), Seb7a(),RadioTab()];
 }
