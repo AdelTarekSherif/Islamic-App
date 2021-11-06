@@ -6,6 +6,7 @@ import 'package:islami_sun/home/tasbeh/TasbehTab.dart';
 
 import 'package:islami_sun/main.dart';
 
+import 'Settings/SettingsTab.dart';
 import 'hadeth/hadethTab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -57,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/ic_radio.png')),
                     label: AppLocalizations.of(context)!.radio),
+
               ],
             ),
           ),
