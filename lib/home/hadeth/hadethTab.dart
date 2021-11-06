@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_sun/main.dart';
+import 'package:islami_sun/providers/AppConfig.dart';
+import 'package:provider/provider.dart';
 
 import 'hadeeth_name_widget.dart';
 
@@ -14,6 +16,7 @@ class _HadethTabState extends State<HadethTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     if (allHadeth.isEmpty) parseHadethFile();
     return Column(
       children: [
@@ -35,7 +38,8 @@ class _HadethTabState extends State<HadethTab> {
                   return Container(
                     margin: EdgeInsets.symmetric(horizontal: 24),
                     height: 1,
-                    color: MyThemeData.primaryColor,
+                    color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
+                        :MyThemeData.darkAccentColor,
                   );
                 },
                 itemCount: allHadeth.length))

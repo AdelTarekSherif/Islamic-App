@@ -3,5 +3,8 @@
   "quran": "Quran",
   "hadeth": "Hadeth",
   "sebha": "Sebha",
+  "setting": "Setting",
+  "suraName": "Sura Name",
+  "versesNumber": "Verses number",
   "radio": "Radio"
 }

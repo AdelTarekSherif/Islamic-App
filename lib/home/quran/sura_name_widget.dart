@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:islami_sun/home/quran/SuraDetailsScreen.dart';
+
+import 'package:islami_sun/providers/AppConfig.dart';
+import 'package:provider/provider.dart';
 
 class SuraNameWidget extends StatelessWidget {
   String name;
@@ -9,23 +11,21 @@ class SuraNameWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, SuraDetailsScreen.routeName,
-            arguments: SuraDetailsArgs(name: name, index: index));
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              name,
-              style: TextStyle(fontSize: 24),
-            ),
+    var provider = Provider.of<AppConfigProvider>(context);
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            name,
+            style: TextStyle(color: provider.themeMode == ThemeMode.light
+                ? Colors.black
+                : Colors.white,fontSize: 24),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

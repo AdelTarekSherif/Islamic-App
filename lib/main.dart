@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:islami_sun/home/HomeScreen.dart';
-import 'package:islami_sun/home/hadeth/hadeethDetailsScreen.dart';
-import 'package:islami_sun/home/quran/SuraDetailsScreen.dart';
+import 'package:provider/provider.dart';
+
+import 'home/HomeScreen.dart';
+import 'home/hadeth/hadeethDetailsScreen.dart';
+import 'home/quran/SuraDetailsScreen.dart';
+import 'providers/AppConfig.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => AppConfigProvider(), child: const MyApp()));
 }
 
 class MyThemeData {
   static const Color primaryColor = Color.fromARGB(255, 183, 147, 95);
+  static const Color DarkPrimaryColor = Color.fromARGB(255, 20, 26, 46);
+  static const Color darkAccentColor = Color.fromARGB(255, 250, 204, 29);
+
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.transparent,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        selectedLabelStyle: TextStyle(color: Colors.black),
-        selectedItemColor: Colors.black,
-        selectedIconTheme: IconThemeData(color: Colors.black),
-        unselectedIconTheme: IconThemeData(color: Colors.white)),
+      selectedItemColor: Colors.black,
+    ),
     appBarTheme: AppBarTheme(
-        centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black),
+      centerTitle: true,
         titleTextStyle: TextStyle(
           color: Colors.black,
           fontSize: 30,
@@ -29,29 +34,27 @@ class MyThemeData {
         elevation: 0),
     primaryColor: MyThemeData.primaryColor,
   );
+
+
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.transparent,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        selectedLabelStyle: TextStyle(color: Colors.black),
-        selectedItemColor: Colors.black,
-        selectedIconTheme: IconThemeData(color: Colors.black),
-        unselectedIconTheme: IconThemeData(color: Colors.white)),
-
+        selectedItemColor: Colors.yellow,
+    ),
     appBarTheme: AppBarTheme(
-        centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black),
+      centerTitle: true,
         color: Colors.transparent,
         elevation: 0),
-    primaryColor: MyThemeData.primaryColor,
+    primaryColor: MyThemeData.DarkPrimaryColor,
   );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'islami',
@@ -70,6 +73,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale(provider.appLanguage),
     );
   }
 }

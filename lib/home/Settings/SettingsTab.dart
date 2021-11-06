@@ -40,7 +40,7 @@ class _SettingsTabState extends State<SettingsTab> {
             ),
           ),
           Text('Theme'),
-          /*InkWell(
+          InkWell(
             onTap: () {
               showThemeBottomSheet();
             },
@@ -58,7 +58,7 @@ class _SettingsTabState extends State<SettingsTab> {
                 ],
               ),
             ),
-          )*/
+          )
         ],
       ),
     );

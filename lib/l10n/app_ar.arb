@@ -3,5 +3,8 @@
   "quran": "قرآن",
   "hadeth": "الحديث",
   "sebha": "التسبيح",
+    "suraName": "اسم السورة",
+    "versesNumber": "عدد الايات",
+    "setting": "الضبط",
   "radio": "الإذاعه"
 }

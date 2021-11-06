@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:islami_sun/home/quran/sura_name_widget.dart';
 import 'package:islami_sun/main.dart';
+import 'package:islami_sun/providers/AppConfig.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'SuraDetailsScreen.dart';
 
 class QuranTab extends StatelessWidget {
   final List<String> names = [
@@ -127,13 +131,15 @@ class QuranTab extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(child: Image.asset('assets/images/quran_top_logo.png')),
         Container(
-          height: 1,
-          color: MyThemeData.primaryColor,
+          height: 3,
+          color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
+              :MyThemeData.darkAccentColor,
         ),
         Row(
           children: [
@@ -141,8 +147,10 @@ class QuranTab extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('عدد الايات',style: TextStyle(
-                      color: Colors.black,
+                  Text(AppLocalizations.of(context)!.versesNumber,style: TextStyle(
+                      color: provider.themeMode == ThemeMode.light
+                          ? Colors.black
+                          : Colors.white,
                       fontSize: 25
                   ),),
                 ],
@@ -152,8 +160,10 @@ class QuranTab extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('اسم السورة',style: TextStyle(
-                      color: Colors.black,
+                  Text(AppLocalizations.of(context)!.suraName,style: TextStyle(
+                      color: provider.themeMode == ThemeMode.light
+                          ? Colors.black
+                          : Colors.white,
                       fontSize: 25
                   ),),
                 ],
@@ -162,8 +172,9 @@ class QuranTab extends StatelessWidget {
           ],
         ),
         Container(
-          height: 1,
-          color: MyThemeData.primaryColor,
+          height: 3,
+          color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
+              :MyThemeData.darkAccentColor,
         ),
         Expanded(
           flex: 3,
@@ -174,29 +185,37 @@ class QuranTab extends StatelessWidget {
                 margin: EdgeInsets.all(5),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('${ayatNumbers[index]}',style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25
-                              ),
-                              ),
-                            ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, SuraDetailsScreen.routeName,
+                            arguments: SuraDetailsArgs(name: names[index], index: index));
+                      },
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('${ayatNumbers[index]}',style: TextStyle(
+                                    color: provider.themeMode == ThemeMode.light
+                                        ? Colors.black
+                                        : Colors.white,
+                                    fontSize: 25
+                                ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SuraNameWidget(names[index], index)
-                            ],
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SuraNameWidget(names[index], index)
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -206,8 +225,9 @@ class QuranTab extends StatelessWidget {
             separatorBuilder: (buildContext, index) {
               return Container(
                 margin: EdgeInsets.symmetric(horizontal: 24),
-                height: 1,
-                color: MyThemeData.primaryColor,
+                height: 3,
+                color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
+                  :MyThemeData.darkAccentColor,
               );
             },
           ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islami_sun/providers/AppConfig.dart';
+import 'package:provider/provider.dart';
 
 import 'hadethTab.dart';
 class HadethDetailsScreen extends StatelessWidget {
@@ -6,10 +8,12 @@ class HadethDetailsScreen extends StatelessWidget {
 
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as HadethItem;
-
+    var provider = Provider.of<AppConfigProvider>(context);
     return Stack(children: [
       Image.asset(
-        'assets/images/main_background.png',
+        provider.themeMode == ThemeMode.light
+            ? 'assets/images/main_background.png'
+            : 'assets/images/dark_bg.png',
         fit: BoxFit.fill,
         width: double.infinity,
       ),
@@ -17,8 +21,15 @@ class HadethDetailsScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: Text(args.title,
-              style:TextStyle( color: Colors.black,
+              style:TextStyle( color: provider.themeMode == ThemeMode.light
+                  ? Colors.black
+                  : Colors.white,
                 fontSize: 30,)),
+          iconTheme: IconThemeData(
+            color: provider.themeMode == ThemeMode.light
+                ? Colors.black
+                : Colors.white,
+          ),
         ),
         body: Container(
             padding: EdgeInsets.all(12),

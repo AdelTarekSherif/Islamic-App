@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_sun/home/quran/VerseWidget.dart';
 import 'package:islami_sun/main.dart';
+import 'package:islami_sun/providers/AppConfig.dart';
+import 'package:provider/provider.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = 'suraDetails';
@@ -13,11 +15,14 @@ class SuraDetailsScreen extends StatefulWidget {
 class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetailsArgs;
     if (suraContent.isEmpty) loadSuraContent(args.index);
     return Stack(children: [
       Image.asset(
-        'assets/images/main_background.png',
+        provider.themeMode == ThemeMode.light
+            ? 'assets/images/main_background.png'
+            : 'assets/images/dark_bg.png',
         fit: BoxFit.fill,
         width: double.infinity,
       ),
@@ -25,8 +30,15 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: Text(args.name,
-              style:TextStyle( color: Colors.black,
+              style:TextStyle( color: provider.themeMode == ThemeMode.light
+                  ? Colors.black
+                  : Colors.white,
                 fontSize: 30,)),
+          iconTheme: IconThemeData(
+            color: provider.themeMode == ThemeMode.light
+                ? Colors.black
+                : Colors.white,
+          ),
         ),
         body: Container(
             margin: EdgeInsets.symmetric(vertical: 50, horizontal: 24),
