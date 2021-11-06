@@ -37,8 +37,9 @@ class _Seb7aState extends State<Seb7a> {
     return Column(
       children: [
         Expanded(
-          flex: 4,
+          flex: 1,
           child: InkWell(
+
             onTap:  _incrementCounter,
             child: Container(
               width: double.infinity,
@@ -53,8 +54,9 @@ class _Seb7aState extends State<Seb7a> {
                           : 'assets/images/head_sebha_dark.png',
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*.106),
+                  Positioned(
+                    top: MediaQuery.of(context).size.height*.126,
+                    bottom: MediaQuery.of(context).size.height*.003,
                     child: Transform.rotate(angle: rotateValue*(pi/180),
                         child:  Image.asset(
                           provider.themeMode == ThemeMode.light
@@ -68,7 +70,7 @@ class _Seb7aState extends State<Seb7a> {
           ),
         ),
         Expanded(
-          flex: 5,
+          flex: 1,
           child: Column(
             children: [
               Container(
