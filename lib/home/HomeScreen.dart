@@ -11,17 +11,22 @@ import 'tasbeh/TasbehTab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'Home';
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
+var appBar;
 class _HomeScreenState extends State<HomeScreen> {
   int currentPage = 0;
-
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
+    appBar=AppBar(
+        title: Text(AppLocalizations.of(context)!.app_title,
+            style:TextStyle( color: provider.themeMode == ThemeMode.light
+                ? Colors.black
+                : Colors.white,
+              fontSize: 30,))
+    );
     return Stack(
       children: [
         Image.asset(
@@ -33,20 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: AppBar(
-              title: Text(AppLocalizations.of(context)!.app_title,
-                  style:TextStyle( color: provider.themeMode == ThemeMode.light
-                      ? Colors.black
-                      : Colors.white,
-                    fontSize: 30,))
-          ),
+          appBar: appBar,
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: currentPage,
             onTap: (index) {
               currentPage = index;
               setState(() {});
             },
-
             items: [
               BottomNavigationBarItem(
                   backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor

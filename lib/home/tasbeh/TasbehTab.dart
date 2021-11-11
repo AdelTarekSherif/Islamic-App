@@ -4,6 +4,8 @@ import 'package:islami_sun/providers/AppConfig.dart';
 import 'dart:math';
 
 import 'package:provider/provider.dart';
+
+import '../HomeScreen.dart';
 class Seb7a extends StatefulWidget {
   @override
   _Seb7aState createState() => _Seb7aState();
@@ -34,79 +36,79 @@ class _Seb7aState extends State<Seb7a> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
-    return Column(
-      children: [
-        Expanded(
-          flex: 1,
-          child: InkWell(
-
-            onTap:  _incrementCounter,
-            child: Container(
-              width: double.infinity,
-              child: Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: MediaQuery.of(context).size.height*.088),
-                    child: Image.asset(
-                      provider.themeMode == ThemeMode.light
-                          ? 'assets/images/head_sebha_logo.png'
-                          : 'assets/images/head_sebha_dark.png',
+    return LayoutBuilder(builder: (context,constraints)=>Column(
+        children: [
+          Container(
+            child: InkWell(
+              onTap:  _incrementCounter,
+              child: Container(
+               width: double.infinity,
+                height: (MediaQuery.of(context).size.height- appBar.preferredSize.height
+                    -MediaQuery.of(context).padding.top)*.4,
+                child: Stack(
+                  alignment: Alignment.topCenter,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: constraints.maxWidth*.1),
+                      height: constraints.maxHeight*.15,
+                      child: Image.asset(
+                        provider.themeMode == ThemeMode.light
+                            ? 'assets/images/head_sebha_logo.png'
+                            : 'assets/images/head_sebha_dark.png',
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top:constraints.maxHeight*.116),
+                      child: Transform.rotate(angle: rotateValue*(pi/180),
+                          child:  Image.asset(
+                            provider.themeMode == ThemeMode.light
+                                ? 'assets/images/body_of_seb7a.png'
+                                : 'assets/images/body_sebha_dark.png',
+                          ),),
+                    ),
+                  ],
+                ),
+              )
+            ),
+          ),
+          Container(
+            height: (MediaQuery.of(context).size.height- appBar.preferredSize.height
+                -MediaQuery.of(context).padding.top)*.4,
+            child: Column(
+              children: [
+                Container(
+                  height: constraints.maxHeight*0.15,
+                  alignment: Alignment.center,
+                  child: Text(
+                    'عدد التسبيحات',
+                    style: TextStyle(
+                        color: provider.themeMode == ThemeMode.light
+                            ? Colors.black
+                            : Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25
                     ),
                   ),
-                  Positioned(
-                    top: MediaQuery.of(context).size.height*.126,
-                    bottom: MediaQuery.of(context).size.height*.003,
-                    child: Transform.rotate(angle: rotateValue*(pi/180),
-                        child:  Image.asset(
-                          provider.themeMode == ThemeMode.light
-                              ? 'assets/images/body_of_seb7a.png'
-                              : 'assets/images/body_sebha_dark.png',
-                        ),),
+                ),
+                Container(
+                  padding: EdgeInsets.only(right: 18,left: 18,top: 26,bottom: 26),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
+                        :MyThemeData.DarkPrimaryColor,
                   ),
-                ],
-              ),
-            )
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.all(5),
-                child: Text(
-                  'عدد التسبيحات',
-                  style: TextStyle(
-                      color: provider.themeMode == ThemeMode.light
-                          ? Colors.black
-                          : Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25
+                  child: Text(
+                    '$_counter',
+                    style: TextStyle(
+                        color: provider.themeMode == ThemeMode.light ? Colors.black
+                            :Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: constraints.maxHeight*0.04
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.only(right: 18,left: 18,top: 26,bottom: 26),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
-                      :MyThemeData.DarkPrimaryColor,
-                ),
-                child: Text(
-                  '$_counter',
-                  style: TextStyle(
-                      color: provider.themeMode == ThemeMode.light ? Colors.black
-                          :Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Container(
-                  padding: EdgeInsets.all(5),
+                Container(
+                  margin: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
                           :MyThemeData.darkAccentColor,
@@ -117,15 +119,15 @@ class _Seb7aState extends State<Seb7a> {
                     child: Text('${text[textCount]}',style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20
+                        fontSize: constraints.maxHeight*0.04
                     ),),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
