@@ -132,7 +132,7 @@ class QuranTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
-    return Column(
+    return LayoutBuilder(builder: (context,constraints)=>Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(child: Image.asset('assets/images/quran_top_logo.png')),
@@ -151,7 +151,7 @@ class QuranTab extends StatelessWidget {
                       color: provider.themeMode == ThemeMode.light
                           ? Colors.black
                           : Colors.white,
-                      fontSize: 25
+                      fontSize: constraints.maxHeight*0.04
                   ),),
                 ],
               ),
@@ -164,7 +164,7 @@ class QuranTab extends StatelessWidget {
                       color: provider.themeMode == ThemeMode.light
                           ? Colors.black
                           : Colors.white,
-                      fontSize: 25
+                      fontSize: constraints.maxHeight*0.04
                   ),),
                 ],
               ),
@@ -200,7 +200,7 @@ class QuranTab extends StatelessWidget {
                                     color: provider.themeMode == ThemeMode.light
                                         ? Colors.black
                                         : Colors.white,
-                                    fontSize: 25
+                                    fontSize: constraints.maxHeight*0.04
                                 ),
                                 ),
                               ],
@@ -233,6 +233,7 @@ class QuranTab extends StatelessWidget {
           ),
         )
       ],
+    )
     );
   }
 }

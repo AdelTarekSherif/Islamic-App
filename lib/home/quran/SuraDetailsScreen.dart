@@ -41,7 +41,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           ),
         ),
         body: Container(
-            margin: EdgeInsets.symmetric(vertical: 50, horizontal: 24),
+            margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*.05, horizontal: 24),
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(24)),
             child: suraContent.isEmpty

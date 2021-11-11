@@ -8,14 +8,15 @@ class AyaWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return LayoutBuilder(builder: (context,constraints)=>Container(
       padding: const EdgeInsets.all(8.0),
       child: Text(
         text+'{${index+1}}',
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 26),
+        style: TextStyle(fontSize: constraints.maxWidth*0.09),
         textDirection: TextDirection.rtl,
       ),
+    )
     );
   }
 }
