@@ -49,7 +49,7 @@ class _Seb7aState extends State<Seb7a> {
                   alignment: Alignment.topCenter,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: constraints.maxWidth*.1),
+                      margin: EdgeInsets.only(left: constraints.maxWidth*.12),
                       height: constraints.maxHeight*.15,
                       child: Image.asset(
                         provider.themeMode == ThemeMode.light
@@ -58,7 +58,7 @@ class _Seb7aState extends State<Seb7a> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top:constraints.maxHeight*.116),
+                      margin: EdgeInsets.only(top:constraints.maxHeight*.1129),
                       child: Transform.rotate(angle: rotateValue*(pi/180),
                           child:  Image.asset(
                             provider.themeMode == ThemeMode.light
