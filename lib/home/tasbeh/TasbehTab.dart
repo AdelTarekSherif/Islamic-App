@@ -73,11 +73,10 @@ class _Seb7aState extends State<Seb7a> {
           ),
           Container(
             height: (MediaQuery.of(context).size.height- appBar.preferredSize.height
-                -MediaQuery.of(context).padding.top)*.4,
+                -MediaQuery.of(context).padding.top)*.3,
             child: Column(
               children: [
                 Container(
-                  height: constraints.maxHeight*0.15,
                   alignment: Alignment.center,
                   child: Text(
                     'عدد التسبيحات',
@@ -86,12 +85,12 @@ class _Seb7aState extends State<Seb7a> {
                             ? Colors.black
                             : Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 25
+                        fontSize: constraints.maxHeight*0.04
                     ),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(right: 18,left: 18,top: 26,bottom: 26),
+                  padding: EdgeInsets.symmetric(vertical: 24,horizontal: 18),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
@@ -103,12 +102,12 @@ class _Seb7aState extends State<Seb7a> {
                         color: provider.themeMode == ThemeMode.light ? Colors.black
                             :Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: constraints.maxHeight*0.04
+                        fontSize: constraints.maxHeight*0.03
                     ),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.all(10),
+                  margin: EdgeInsets.only(top: 10),
                   decoration: BoxDecoration(
                       color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
                           :MyThemeData.darkAccentColor,

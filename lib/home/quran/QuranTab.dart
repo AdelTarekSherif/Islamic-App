@@ -4,6 +4,7 @@ import 'package:islami_sun/main.dart';
 import 'package:islami_sun/providers/AppConfig.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../HomeScreen.dart';
 import 'SuraDetailsScreen.dart';
 
 class QuranTab extends StatelessWidget {
@@ -141,43 +142,50 @@ class QuranTab extends StatelessWidget {
           color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
               :MyThemeData.darkAccentColor,
         ),
-        Row(
-          children: [
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(AppLocalizations.of(context)!.versesNumber,style: TextStyle(
-                      color: provider.themeMode == ThemeMode.light
-                          ? Colors.black
-                          : Colors.white,
-                      fontSize: constraints.maxHeight*0.04
-                  ),),
-                ],
+        Container(
+          height: (MediaQuery.of(context).size.height- appBar.preferredSize.height
+              -MediaQuery.of(context).padding.top)*.1,
+          child: Row(
+            children: [
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(AppLocalizations.of(context)!.versesNumber,style: TextStyle(
+                        color: provider.themeMode == ThemeMode.light
+                            ? Colors.black
+                            : Colors.white,
+                        fontSize: constraints.maxHeight*0.03,
+                      fontWeight: FontWeight.bold
+                    ),),
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(AppLocalizations.of(context)!.suraName,style: TextStyle(
-                      color: provider.themeMode == ThemeMode.light
-                          ? Colors.black
-                          : Colors.white,
-                      fontSize: constraints.maxHeight*0.04
-                  ),),
-                ],
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(AppLocalizations.of(context)!.suraName,style: TextStyle(
+                        color: provider.themeMode == ThemeMode.light
+                            ? Colors.black
+                            : Colors.white,
+                        fontSize: constraints.maxHeight*0.03,
+                        fontWeight: FontWeight.bold
+                    ),),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         Container(
           height: 3,
           color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
               :MyThemeData.darkAccentColor,
         ),
-        Expanded(
-          flex: 3,
+        Container(
+          height: (MediaQuery.of(context).size.height- appBar.preferredSize.height
+              -MediaQuery.of(context).padding.top)*.6,
           child: ListView.separated(
             itemBuilder: (buildContext, index) {
               return Container(
