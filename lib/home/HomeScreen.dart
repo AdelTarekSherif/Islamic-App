@@ -61,11 +61,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       :MyThemeData.DarkPrimaryColor,
                   icon: ImageIcon(AssetImage('assets/images/ic_sebha.png')),
                   label: AppLocalizations.of(context)!.sebha),
-              BottomNavigationBarItem(
+             /* BottomNavigationBarItem(
                   backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
                       :MyThemeData.DarkPrimaryColor,
                   icon: ImageIcon(AssetImage('assets/images/ic_radio.png')),
-                  label: AppLocalizations.of(context)!.radio),
+                  label: AppLocalizations.of(context)!.radio),*/
               BottomNavigationBarItem(
                   backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
                   :MyThemeData.DarkPrimaryColor,
@@ -83,5 +83,5 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  List<Widget> views = [QuranTab(), HadethTab(), Seb7a(),RadioTab(),SettingsTab()];
+  List<Widget> views = [QuranTab(), HadethTab(), Seb7a(),SettingsTab()];
 }

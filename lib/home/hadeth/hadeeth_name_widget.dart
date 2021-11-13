@@ -8,8 +8,8 @@ import 'hadethTab.dart';
 
 class HadethNameWidget extends StatelessWidget {
   HadethItem hadeth;
-
-  HadethNameWidget(this.hadeth);
+  var constraints;
+  HadethNameWidget(this.hadeth,this.constraints);
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +22,13 @@ class HadethNameWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              hadeth.title,
-              style: TextStyle(color: provider.themeMode == ThemeMode.light
-                  ? Colors.black
-                  : Colors.white,fontSize: 24),
+          Text(
+            hadeth.title,
+            style: TextStyle(color: provider.themeMode == ThemeMode.light
+                ? Colors.black
+                : Colors.white,fontSize: constraints.maxWidth*0.05
             ),
+            textDirection: TextDirection.rtl,
           ),
         ],
       ),

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class AyaWidget extends StatelessWidget {
   String text;
   int index;
-
-  AyaWidget(this.text, this.index);
+var constraints;
+  AyaWidget(this.text, this.index,this.constraints);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class AyaWidget extends StatelessWidget {
       child: Text(
         text+'{${index+1}}',
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: constraints.maxWidth*0.09),
+        style: TextStyle(fontSize: constraints.maxWidth*0.08),
         textDirection: TextDirection.rtl,
       ),
     )

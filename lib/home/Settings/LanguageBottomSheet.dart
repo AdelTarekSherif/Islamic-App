@@ -8,26 +8,33 @@ class LanguageBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
-    return Container(
-      padding: EdgeInsets.all(12),
-      child: Column(
-        children: [
-          InkWell(
-            onTap: () {
-              provider.changeLanguage('en');
-            },
-            child: provider.appLanguage == 'en'
-                ? getSelectedWidget('English', context)
-                : getUnSelectedWidget('Englishِ', context),
-          ),
-          InkWell(
+    return SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.only(
+          top: 10,
+          right: 10,
+          left: 10,
+          bottom: MediaQuery.of(context).viewInsets.bottom+10,
+        ),
+        child: Column(
+          children: [
+            InkWell(
               onTap: () {
-                provider.changeLanguage('ar');
+                provider.changeLanguage('en');
               },
-              child: provider.appLanguage == 'ar'
-                  ? getSelectedWidget('العربيه', context)
-                  : getUnSelectedWidget('العربيه', context))
-        ],
+              child: provider.appLanguage == 'en'
+                  ? getSelectedWidget('English', context)
+                  : getUnSelectedWidget('Englishِ', context),
+            ),
+            InkWell(
+                onTap: () {
+                  provider.changeLanguage('ar');
+                },
+                child: provider.appLanguage == 'ar'
+                    ? getSelectedWidget('العربيه', context)
+                    : getUnSelectedWidget('العربيه', context))
+          ],
+        ),
       ),
     );
   }

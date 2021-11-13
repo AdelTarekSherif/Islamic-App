@@ -18,32 +18,33 @@ class _HadethTabState extends State<HadethTab> {
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
     if (allHadeth.isEmpty) parseHadethFile();
-    return Column(
-      children: [
-        Expanded(
-            flex: 1, child: Image.asset('assets/images/hadeth_top_logo.png')),
-        Expanded(
-            flex: 3,
-            child: allHadeth.isEmpty
-                ? Container(
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
-            )
-                : ListView.separated(
-                itemBuilder: (buildContext, index) {
-                  return HadethNameWidget(allHadeth[index]);
-                },
-                separatorBuilder: (buildContext, index) {
-                  return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 24),
-                    height: 1,
-                    color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
-                        :MyThemeData.darkAccentColor,
-                  );
-                },
-                itemCount: allHadeth.length))
-      ],
+    return LayoutBuilder(builder: (context,constraints)=>Column(
+        children: [
+          Expanded(
+              flex: 1, child: Image.asset('assets/images/hadeth_top_logo.png')),
+          Expanded(
+              flex: 3,
+              child: allHadeth.isEmpty
+                  ? Container(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              )
+                  : ListView.separated(
+                  itemBuilder: (buildContext, index) {
+                    return HadethNameWidget(allHadeth[index],constraints);
+                  },
+                  separatorBuilder: (buildContext, index) {
+                    return Container(
+                      margin: EdgeInsets.symmetric(horizontal: 24),
+                      height: 1,
+                      color: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
+                          :MyThemeData.darkAccentColor,
+                    );
+                  },
+                  itemCount: allHadeth.length))
+        ],
+      ),
     );
   }
 

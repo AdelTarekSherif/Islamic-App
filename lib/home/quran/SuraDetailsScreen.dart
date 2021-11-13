@@ -40,24 +40,25 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                 : Colors.white,
           ),
         ),
-        body: Container(
-            margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*.05, horizontal: 24),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(24)),
-            child: suraContent.isEmpty
-                ? Center(child: CircularProgressIndicator())
-                : ListView.separated(
-                itemBuilder: (buildContext, index) {
-                  return AyaWidget(suraContent[index], index);
-                },
-                separatorBuilder: (buildContext, index) {
-                  return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 24),
-                    height: 1,
-                    color: MyThemeData.primaryColor,
-                  );
-                },
-                itemCount: suraContent.length)),
+        body: LayoutBuilder(builder: (context,constraints)=> Container(
+              margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*.05, horizontal: 24),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(24)),
+              child: suraContent.isEmpty
+                  ? Center(child: CircularProgressIndicator())
+                  : ListView.separated(
+                  itemBuilder: (buildContext, index) {
+                    return AyaWidget(suraContent[index], index,constraints);
+                  },
+                  separatorBuilder: (buildContext, index) {
+                    return Container(
+                      margin: EdgeInsets.symmetric(horizontal: 24),
+                      height: 1,
+                      color: MyThemeData.primaryColor,
+                    );
+                  },
+                  itemCount: suraContent.length)),
+        ),
       )
     ]);
   }

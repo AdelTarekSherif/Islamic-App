@@ -8,26 +8,33 @@ class ThemeBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
-    return Container(
-      padding: EdgeInsets.all(12),
-      child: Column(
-        children: [
-          InkWell(
-            onTap: () {
-              provider.changeTheme(ThemeMode.light);
-            },
-            child: provider.themeMode == ThemeMode.light
-                ? getSelectedWidget('Light', context)
-                : getUnSelectedWidget('Light', context),
-          ),
-          InkWell(
+    return SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.only(
+        top: 10,
+        right: 10,
+        left: 10,
+        bottom: MediaQuery.of(context).viewInsets.bottom+10,
+      ),
+        child: Column(
+          children: [
+            InkWell(
               onTap: () {
-                provider.changeTheme(ThemeMode.dark);
+                provider.changeTheme(ThemeMode.light);
               },
-              child: provider.themeMode == ThemeMode.dark
-                  ? getSelectedWidget('Dark', context)
-                  : getUnSelectedWidget('Dark', context))
-        ],
+              child: provider.themeMode == ThemeMode.light
+                  ? getSelectedWidget('Light', context)
+                  : getUnSelectedWidget('Light', context),
+            ),
+            InkWell(
+                onTap: () {
+                  provider.changeTheme(ThemeMode.dark);
+                },
+                child: provider.themeMode == ThemeMode.dark
+                    ? getSelectedWidget('Dark', context)
+                    : getUnSelectedWidget('Dark', context))
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islami_sun/home/quran/sura_name_widget.dart';
 import 'package:islami_sun/main.dart';
 import 'package:islami_sun/providers/AppConfig.dart';
 import 'package:provider/provider.dart';
@@ -151,30 +150,41 @@ class QuranTab extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(AppLocalizations.of(context)!.versesNumber,style: TextStyle(
-                        color: provider.themeMode == ThemeMode.light
-                            ? Colors.black
-                            : Colors.white,
-                        fontSize: constraints.maxHeight*0.03,
-                      fontWeight: FontWeight.bold
-                    ),),
+                    Container(
+                      width: constraints.maxWidth*.5,
+                      child: FittedBox(
+                        child: Text(AppLocalizations.of(context)!.versesNumber,style: TextStyle(
+                            color: provider.themeMode == ThemeMode.light
+                                ? Colors.black
+                                : Colors.white,
+                            fontSize:(constraints.maxWidth )*.5,
+                          //fontWeight: FontWeight.bold
+                        ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-              Expanded(
-                child: Row(
+               Expanded(
+                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(AppLocalizations.of(context)!.suraName,style: TextStyle(
-                        color: provider.themeMode == ThemeMode.light
-                            ? Colors.black
-                            : Colors.white,
-                        fontSize: constraints.maxHeight*0.03,
-                        fontWeight: FontWeight.bold
-                    ),),
+                    Container(
+                      width: constraints.maxWidth*.5,
+                      child: FittedBox(
+                        child: Text(AppLocalizations.of(context)!.suraName,style: TextStyle(
+                            color: provider.themeMode == ThemeMode.light
+                                ? Colors.black
+                                : Colors.white,
+                            fontSize: (constraints.maxWidth )*.5,
+                            //fontWeight: FontWeight.bold
+                        ),),
+                      ),
+                    ),
                   ],
-                ),
               ),
+               ),
             ],
           ),
         ),
@@ -208,7 +218,7 @@ class QuranTab extends StatelessWidget {
                                     color: provider.themeMode == ThemeMode.light
                                         ? Colors.black
                                         : Colors.white,
-                                    fontSize: constraints.maxHeight*0.04
+                                    fontSize: constraints.maxWidth*0.05,
                                 ),
                                 ),
                               ],
@@ -218,7 +228,13 @@ class QuranTab extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SuraNameWidget(names[index], index)
+                                Text( names[index],
+                                  style: TextStyle(color: provider.themeMode == ThemeMode.light
+                                      ? Colors.black
+                                      : Colors.white,fontSize: constraints.maxWidth*0.05,
+                                  ),
+                                  textDirection: TextDirection.rtl,
+                                )
                               ],
                             ),
                           ),

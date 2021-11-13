@@ -33,7 +33,7 @@ class HadethDetailsScreen extends StatelessWidget {
         ),
         body: Container(
             padding: EdgeInsets.all(12),
-            margin: EdgeInsets.symmetric(vertical: 96, horizontal: 24),
+            margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*.05, horizontal: 24),
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(24)),
             child: SingleChildScrollView(
@@ -41,7 +41,7 @@ class HadethDetailsScreen extends StatelessWidget {
                 args.content,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                 ),
                 textDirection: TextDirection.rtl,
               ),
