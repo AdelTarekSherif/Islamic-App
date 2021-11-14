@@ -20,7 +20,10 @@ class _SettingsTabState extends State<SettingsTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text('Language'),
+          Text('Language',style: TextStyle(
+            color: provider.themeMode == ThemeMode.light ? Colors.black
+                :Colors.white,
+          ),),
           InkWell(
             onTap: () {
               showLanguageBottomSheet();
@@ -39,7 +42,10 @@ class _SettingsTabState extends State<SettingsTab> {
               ),
             ),
           ),
-          Text('Theme'),
+          Text('Theme',style: TextStyle(
+            color: provider.themeMode == ThemeMode.light ? Colors.black
+                :Colors.white,
+          ),),
           InkWell(
             onTap: () {
               showThemeBottomSheet();

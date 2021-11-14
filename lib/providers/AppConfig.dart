@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppConfigProvider extends ChangeNotifier {
-  String appLanguage = 'en'; // Todo:read this value from sharedpreferences
+  String appLanguage = 'العربيه'; // Todo:read this value from sharedpreferences
   ThemeMode themeMode =
       ThemeMode.light; // Todo:read this value from sharedprefences
   void changeLanguage(String newLanguage) {

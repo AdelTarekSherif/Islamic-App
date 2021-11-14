@@ -26,7 +26,7 @@ class HadethNameWidget extends StatelessWidget {
             hadeth.title,
             style: TextStyle(color: provider.themeMode == ThemeMode.light
                 ? Colors.black
-                : Colors.white,fontSize: constraints.maxWidth*0.05
+                : Colors.white,fontSize: constraints.maxWidth*0.08
             ),
             textDirection: TextDirection.rtl,
           ),

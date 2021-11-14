@@ -31,21 +31,22 @@ class HadethDetailsScreen extends StatelessWidget {
                 : Colors.white,
           ),
         ),
-        body: Container(
-            padding: EdgeInsets.all(12),
-            margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*.05, horizontal: 24),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(24)),
-            child: SingleChildScrollView(
-              child: Text(
-                args.content,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
+        body: LayoutBuilder(builder: (context,constraints)=> Container(
+              padding: EdgeInsets.all(12),
+              margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*.05, horizontal: 24),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(24)),
+              child: SingleChildScrollView(
+                child: Text(
+                  args.content,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: constraints.maxWidth*0.06,
+                  ),
+                  textDirection: TextDirection.rtl,
                 ),
-                textDirection: TextDirection.rtl,
-              ),
-            )),
+              )),
+        ),
       )
     ]);
   }
