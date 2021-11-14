@@ -15,6 +15,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 var appBar;
+var bottomNavigationBar;
 class _HomeScreenState extends State<HomeScreen> {
   int currentPage = 0;
   @override
@@ -25,7 +26,43 @@ class _HomeScreenState extends State<HomeScreen> {
             style:TextStyle( color: provider.themeMode == ThemeMode.light
                 ? Colors.black
                 : Colors.white,
-              fontSize: 30,))
+              fontSize: MediaQuery.of(context).size.width*0.09,))
+    );
+    bottomNavigationBar= BottomNavigationBar(
+      currentIndex: currentPage,
+      onTap: (index) {
+        currentPage = index;
+        setState(() {});
+      },
+      items: [
+        BottomNavigationBarItem(
+            backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
+                :MyThemeData.DarkPrimaryColor,
+            icon: ImageIcon(AssetImage('assets/images/ic_quran.png')),
+            label: AppLocalizations.of(context)!.quran),
+        BottomNavigationBarItem(
+            backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
+                :MyThemeData.DarkPrimaryColor,
+            icon: ImageIcon(AssetImage('assets/images/ic_hadeth.png')),
+            label: AppLocalizations.of(context)!.hadeth),
+        BottomNavigationBarItem(
+            backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
+                :MyThemeData.DarkPrimaryColor,
+            icon: ImageIcon(AssetImage('assets/images/ic_sebha.png')),
+            label: AppLocalizations.of(context)!.sebha),
+        /* BottomNavigationBarItem(
+                  backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
+                      :MyThemeData.DarkPrimaryColor,
+                  icon: ImageIcon(AssetImage('assets/images/ic_radio.png')),
+                  label: AppLocalizations.of(context)!.radio),*/
+        BottomNavigationBarItem(
+            backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
+                :MyThemeData.DarkPrimaryColor,
+            icon: Icon(Icons.settings),
+            label: AppLocalizations.of(context)!.setting),
+      ],
+      selectedItemColor: provider.themeMode == ThemeMode.light ? Colors.black
+          :Colors.yellow,
     );
     return Stack(
       children: [
@@ -39,42 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Scaffold(
           backgroundColor: Colors.transparent,
           appBar: appBar,
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: currentPage,
-            onTap: (index) {
-              currentPage = index;
-              setState(() {});
-            },
-            items: [
-              BottomNavigationBarItem(
-                  backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
-                      :MyThemeData.DarkPrimaryColor,
-                  icon: ImageIcon(AssetImage('assets/images/ic_quran.png')),
-                  label: AppLocalizations.of(context)!.quran),
-              BottomNavigationBarItem(
-                  backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
-                      :MyThemeData.DarkPrimaryColor,
-                  icon: ImageIcon(AssetImage('assets/images/ic_hadeth.png')),
-                  label: AppLocalizations.of(context)!.hadeth),
-              BottomNavigationBarItem(
-                  backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
-                      :MyThemeData.DarkPrimaryColor,
-                  icon: ImageIcon(AssetImage('assets/images/ic_sebha.png')),
-                  label: AppLocalizations.of(context)!.sebha),
-             /* BottomNavigationBarItem(
-                  backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
-                      :MyThemeData.DarkPrimaryColor,
-                  icon: ImageIcon(AssetImage('assets/images/ic_radio.png')),
-                  label: AppLocalizations.of(context)!.radio),*/
-              BottomNavigationBarItem(
-                  backgroundColor: provider.themeMode == ThemeMode.light ? MyThemeData.primaryColor
-                  :MyThemeData.DarkPrimaryColor,
-                  icon: Icon(Icons.settings),
-                  label: AppLocalizations.of(context)!.setting),
-            ],
-            selectedItemColor: provider.themeMode == ThemeMode.light ? Colors.black
-              :Colors.yellow,
-          ),
+          bottomNavigationBar: bottomNavigationBar,
           body: Container(
             child: views[currentPage],
           ),

@@ -72,7 +72,7 @@ class _Seb7aState extends State<Seb7a> {
           SingleChildScrollView(
             child: Container(
               height: (MediaQuery.of(context).size.height- appBar.preferredSize.height
-                  -MediaQuery.of(context).padding.top)*.4,
+                  -MediaQuery.of(context).padding.top-kBottomNavigationBarHeight)*.4,
               child: Column(
                 children: [
                   Container(
